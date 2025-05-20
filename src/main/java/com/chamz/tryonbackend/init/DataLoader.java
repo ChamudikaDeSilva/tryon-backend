@@ -17,6 +17,7 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (roleRepository.count() == 0) {
+            roleRepository.save(Role.builder().name("ROOT").build());
             roleRepository.save(Role.builder().name("ADMIN").build());
             roleRepository.save(Role.builder().name("CUSTOMER").build());
             roleRepository.save(Role.builder().name("DESIGNER").build());
