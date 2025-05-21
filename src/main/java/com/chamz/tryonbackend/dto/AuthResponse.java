@@ -13,6 +13,7 @@ public class AuthResponse
     private String email;
     private String username;
     private String role;
+    private String refreshToken;
 
     private String message;
 }

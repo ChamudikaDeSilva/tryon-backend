@@ -3,6 +3,7 @@ package com.chamz.tryonbackend.controller;
 import com.chamz.tryonbackend.dto.RegisterRequest;
 import com.chamz.tryonbackend.dto.AuthResponse;
 import com.chamz.tryonbackend.dto.LoginRequest;
+import com.chamz.tryonbackend.dto.RefreshTokenRequest;
 import com.chamz.tryonbackend.service.AuthService;
 
 import jakarta.validation.Valid;
@@ -35,4 +36,10 @@ public class AuthController {
         // logger.info("Login successful for email: {}", request.getEmail());
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<AuthResponse> refresh(@RequestBody RefreshTokenRequest request) {
+        return ResponseEntity.ok(authService.refreshToken(request.getRefreshToken()));
+    }
+
 }

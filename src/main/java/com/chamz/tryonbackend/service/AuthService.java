@@ -1,8 +1,10 @@
 package com.chamz.tryonbackend.service;
 
-import com.chamz.tryonbackend.dto.RegisterRequest;
 import com.chamz.tryonbackend.dto.AuthResponse;
 import com.chamz.tryonbackend.dto.LoginRequest;
+import com.chamz.tryonbackend.dto.RegisterRequest;
+
+import com.chamz.tryonbackend.model.RefreshToken;
 import com.chamz.tryonbackend.model.Role;
 import com.chamz.tryonbackend.model.User;
 import com.chamz.tryonbackend.repository.RoleRepository;
@@ -19,13 +21,13 @@ public class AuthService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final RefreshTokenService refreshTokenService;
 
-    public AuthResponse register(RegisterRequest request) 
-    {
-        // Check if username or email already exists
+    public AuthResponse register(RegisterRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) {
             return AuthResponse.builder().message("Username already exists").build();
         }
+
         if (userRepository.existsByEmail(request.getEmail())) {
             return AuthResponse.builder().message("Email already exists").build();
         }
@@ -46,23 +48,20 @@ public class AuthService {
 
         userRepository.save(user);
 
-        // Generate JWT token for the newly registered user
         String jwtToken = jwtService.generateToken(user.getEmail());
+        RefreshToken refreshToken = refreshTokenService.createRefreshToken(user);
 
-
-        // Return user info + token + success message
         return AuthResponse.builder()
                 .token(jwtToken)
+                .refreshToken(refreshToken.getToken())
                 .email(user.getEmail())
                 .username(user.getUsername())
-                .role(user.getRole().getName())  // assuming getName() returns string role name
+                .role(user.getRole().getName())
                 .message("User registered successfully")
                 .build();
     }
 
-
-    public AuthResponse authenticate(LoginRequest request) 
-    {
+    public AuthResponse authenticate(LoginRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("Invalid email or password"));
 
@@ -71,9 +70,11 @@ public class AuthService {
         }
 
         String token = jwtService.generateToken(user.getEmail());
+        RefreshToken refreshToken = refreshTokenService.createRefreshToken(user);
 
         return AuthResponse.builder()
                 .token(token)
+                .refreshToken(refreshToken.getToken())
                 .email(user.getEmail())
                 .username(user.getUsername())
                 .role(user.getRole().getName())
@@ -81,4 +82,19 @@ public class AuthService {
                 .build();
     }
 
+    public AuthResponse refreshToken(String token) {
+        RefreshToken refreshToken = refreshTokenService.validateRefreshToken(token);
+        User user = refreshToken.getUser();
+
+        String newAccessToken = jwtService.generateToken(user.getEmail());
+
+        return AuthResponse.builder()
+                .token(newAccessToken)
+                .refreshToken(refreshToken.getToken()) // Reuse the same refresh token or generate a new one
+                .email(user.getEmail())
+                .username(user.getUsername())
+                .role(user.getRole().getName())
+                .message("Token refreshed successfully")
+                .build();
+    }
 }
