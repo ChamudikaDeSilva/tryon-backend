@@ -4,6 +4,8 @@ import com.chamz.tryonbackend.dto.RegisterRequest;
 import com.chamz.tryonbackend.dto.AuthResponse;
 import com.chamz.tryonbackend.dto.LoginRequest;
 import com.chamz.tryonbackend.service.AuthService;
+
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 // import org.slf4j.Logger;
 // import org.slf4j.LoggerFactory;
@@ -19,7 +21,7 @@ public class AuthController {
     // private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
         // logger.info("Received register request for email: {}", request.getEmail());
         AuthResponse response = authService.register(request);
         // logger.info("Register successful for email: {}", request.getEmail());
@@ -27,7 +29,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
         // logger.info("Received login request for email: {}", request.getEmail());
         AuthResponse response = authService.authenticate(request);
         // logger.info("Login successful for email: {}", request.getEmail());
