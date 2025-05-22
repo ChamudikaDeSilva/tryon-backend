@@ -21,6 +21,7 @@ public class DataLoader implements CommandLineRunner {
             roleRepository.save(Role.builder().name("ADMIN").build());
             roleRepository.save(Role.builder().name("CUSTOMER").build());
             roleRepository.save(Role.builder().name("DESIGNER").build());
+            roleRepository.save(Role.builder().name("USER").build());
             System.out.println("Default roles inserted.");
         } else {
             System.out.println("Roles already exist. Skipping role seeding.");
