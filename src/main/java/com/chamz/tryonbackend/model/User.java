@@ -1,5 +1,9 @@
 package com.chamz.tryonbackend.model;
 
+import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,10 +35,21 @@ public class User
 
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "phone_number")
+
+    @Column(name = "phone_number", nullable = true)
+    @Nullable
     private String phoneNumber;
 
+    @Column(name = "address", nullable = true)
+    @Nullable
     private String address;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }

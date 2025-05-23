@@ -1,5 +1,6 @@
 package com.chamz.tryonbackend.dto;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -22,7 +23,12 @@ public class RegisterRequest {
     private String role;
 
     private String firstName;
+    
     private String lastName;
+
+    @Nullable
     private String phoneNumber;
+
+    @Nullable
     private String address;
 }

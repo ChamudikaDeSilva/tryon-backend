@@ -23,6 +23,9 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
+        if(request.getRole()==null || request.getRole().isBlank() || request.getRole().isEmpty()){
+            request.setRole("CUSTOMER");
+        }
         // logger.info("Received register request for email: {}", request.getEmail());
         AuthResponse response = authService.register(request);
         // logger.info("Register successful for email: {}", request.getEmail());

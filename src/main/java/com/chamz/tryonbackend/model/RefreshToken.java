@@ -2,8 +2,10 @@ package com.chamz.tryonbackend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.Instant;
+import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Data
@@ -24,4 +26,10 @@ public class RefreshToken {
     private User user;
 
     private Instant expiryDate;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }
