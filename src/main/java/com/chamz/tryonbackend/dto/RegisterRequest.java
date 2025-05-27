@@ -19,10 +19,12 @@ public class RegisterRequest {
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
-    @NotBlank(message = "Role is required")
+    
     private String role;
 
     private String firstName;
+
+    
     
     private String lastName;
 
@@ -31,4 +33,9 @@ public class RegisterRequest {
 
     @Nullable
     private String address;
+
+    public RegisterRequest() {
+    this.role = "CUSTOMER"; // default role
+}
+
 }

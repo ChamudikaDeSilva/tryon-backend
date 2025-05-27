@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ public class AuthController {
 
     private final AuthService authService;
     // private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
+    
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
