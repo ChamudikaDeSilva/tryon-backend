@@ -4,7 +4,7 @@ import com.chamz.tryonbackend.exception.InvalidCredentialsException;
 import com.chamz.tryonbackend.model.RefreshToken;
 import com.chamz.tryonbackend.model.User;
 import com.chamz.tryonbackend.repository.RefreshTokenRepository;
-import com.chamz.tryonbackend.repository.UserRepository;
+//import com.chamz.tryonbackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.UUID;
 public class RefreshTokenService {
 
     private final RefreshTokenRepository refreshTokenRepository;
-    private final UserRepository userRepository;
+    //private final UserRepository userRepository;
 
     public RefreshToken createRefreshToken(User user) {
         return refreshTokenRepository.findByUser(user)
