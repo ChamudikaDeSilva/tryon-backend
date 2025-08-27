@@ -1,32 +1,35 @@
-package com.chamz.tryonbackend.model;
+package com.chamz.glamora.auth.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import jakarta.persistence.*;
-import lombok.*;
-
 
 @Entity
-@Table(name = "roles")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-
-public class Role 
-{
+public class RefreshToken {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String name;  // e.g. "ADMIN", "CUSTOMER"
+    @Column(nullable = false, unique = true)
+    private String token;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    private Instant expiryDate;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
 }

@@ -1,4 +1,4 @@
-package com.chamz.tryonbackend.service;
+package com.chamz.glamora.auth.service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

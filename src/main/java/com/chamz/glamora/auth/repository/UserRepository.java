@@ -1,10 +1,10 @@
-package com.chamz.tryonbackend.repository;
+package com.chamz.glamora.auth.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.chamz.tryonbackend.model.User;
+import com.chamz.glamora.auth.model.User;
 
 public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByEmail(String email);

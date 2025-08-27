@@ -1,13 +1,13 @@
-package com.chamz.tryonbackend.init;
-
-import com.chamz.tryonbackend.model.Role;
-import com.chamz.tryonbackend.model.User;
-import com.chamz.tryonbackend.repository.RoleRepository;
-import com.chamz.tryonbackend.repository.UserRepository;
+package com.chamz.glamora.init;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import com.chamz.glamora.auth.model.Role;
+import com.chamz.glamora.auth.model.User;
+import com.chamz.glamora.auth.repository.RoleRepository;
+import com.chamz.glamora.auth.repository.UserRepository;
 
 @Component
 public class DataLoader implements CommandLineRunner {

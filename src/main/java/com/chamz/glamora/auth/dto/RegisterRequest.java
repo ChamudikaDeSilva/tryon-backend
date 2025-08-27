@@ -1,4 +1,4 @@
-package com.chamz.tryonbackend.dto;
+package com.chamz.glamora.auth.dto;
 
 import io.micrometer.common.lang.Nullable;
 import jakarta.validation.constraints.Email;

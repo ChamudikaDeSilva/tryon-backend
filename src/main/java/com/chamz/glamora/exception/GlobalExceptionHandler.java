@@ -1,4 +1,4 @@
-package com.chamz.tryonbackend.exception;
+package com.chamz.glamora.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

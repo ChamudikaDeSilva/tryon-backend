@@ -1,7 +1,8 @@
-package com.chamz.tryonbackend.repository;
+package com.chamz.glamora.auth.repository;
 
-import com.chamz.tryonbackend.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.chamz.glamora.auth.model.Role;
 
 import java.util.Optional;
 

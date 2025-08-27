@@ -1,10 +1,4 @@
-package com.chamz.tryonbackend.controller;
-
-import com.chamz.tryonbackend.dto.RegisterRequest;
-import com.chamz.tryonbackend.dto.AuthResponse;
-import com.chamz.tryonbackend.dto.LoginRequest;
-import com.chamz.tryonbackend.dto.RefreshTokenRequest;
-import com.chamz.tryonbackend.service.AuthService;
+package com.chamz.glamora.auth.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +6,12 @@ import lombok.RequiredArgsConstructor;
 // import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.chamz.glamora.auth.dto.AuthResponse;
+import com.chamz.glamora.auth.dto.LoginRequest;
+import com.chamz.glamora.auth.dto.RefreshTokenRequest;
+import com.chamz.glamora.auth.dto.RegisterRequest;
+import com.chamz.glamora.auth.service.AuthService;
 
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RestController

@@ -1,9 +1,9 @@
-package com.chamz.tryonbackend.repository;
-
-import com.chamz.tryonbackend.model.RefreshToken;
-import com.chamz.tryonbackend.model.User;
+package com.chamz.glamora.auth.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.chamz.glamora.auth.model.RefreshToken;
+import com.chamz.glamora.auth.model.User;
 
 import java.util.Optional;
 

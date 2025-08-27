@@ -1,4 +1,4 @@
-package com.chamz.tryonbackend.config;
+package com.chamz.glamora.config;
 
 // import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

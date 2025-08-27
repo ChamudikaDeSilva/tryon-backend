@@ -1,17 +1,17 @@
-package com.chamz.tryonbackend.service;
+package com.chamz.glamora.auth.service;
 
-import com.chamz.tryonbackend.dto.AuthResponse;
-import com.chamz.tryonbackend.dto.LoginRequest;
-import com.chamz.tryonbackend.dto.RegisterRequest;
-
-import com.chamz.tryonbackend.model.RefreshToken;
-import com.chamz.tryonbackend.model.Role;
-import com.chamz.tryonbackend.model.User;
-import com.chamz.tryonbackend.repository.RoleRepository;
-import com.chamz.tryonbackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.chamz.glamora.auth.dto.AuthResponse;
+import com.chamz.glamora.auth.dto.LoginRequest;
+import com.chamz.glamora.auth.dto.RegisterRequest;
+import com.chamz.glamora.auth.model.RefreshToken;
+import com.chamz.glamora.auth.model.Role;
+import com.chamz.glamora.auth.model.User;
+import com.chamz.glamora.auth.repository.RoleRepository;
+import com.chamz.glamora.auth.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor

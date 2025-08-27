@@ -1,4 +1,4 @@
-package com.chamz.tryonbackend.dto;
+package com.chamz.glamora.auth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

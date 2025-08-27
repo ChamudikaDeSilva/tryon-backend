@@ -1,8 +1,9 @@
-package com.chamz.tryonbackend.model;
+package com.chamz.glamora.auth.model;
 
 import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
